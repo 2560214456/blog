@@ -3,10 +3,7 @@ package com.blog.controller.admin;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.blog.config.rabbitmqConfig;
-import com.blog.entity.ConditionQuery;
-import com.blog.entity.TBlog;
-import com.blog.entity.TBlogTags;
-import com.blog.entity.TUser;
+import com.blog.entity.*;
 import com.blog.mapper.TBlogTagsMapper;
 import com.blog.rabbitMQ.rabbitMQMessage;
 import org.apache.shiro.SecurityUtils;
@@ -90,9 +87,9 @@ public class adminBlogController extends adminBaseEntity {
         boolean falg = blogService.removeById(id);
         //根据博客删除，删除博客引用的标签
         boolean b = blogTagsService.remove(new LambdaQueryWrapper<TBlogTags>().eq(TBlogTags::getBlogsId, id));
+        //根据博客id删除博客下的所有评论
+        commentService.remove(new LambdaQueryWrapper<TComment>().eq(TComment::getBlogId,id));
         //RabbitMQ发送消息，删除es中的博客数据
-        /*rabbitTemplate.convertAndSend(rabbitmqConfig.BLOG_EXCHANGE_NAME,rabbitmqConfig.ROUTINGKEY_KEY
-                ,new rabbitMQMessage(id,rabbitMQMessage.REMOVE));*/
         amqpTemplate.convertAndSend(rabbitmqConfig.BLOG_EXCHANGE_NAME,rabbitmqConfig.ROUTINGKEY_KEY
                 ,new rabbitMQMessage(id,rabbitMQMessage.REMOVE));
         if (falg && b)
