@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.mapper.TBlogMapper">
+    <select id="findByAllAddES" resultType="com.blog.search.model.blogDocument">
+        SELECT
+        b.id,b.title,b.description,b.create_time,b.views,b.flag,b.first_picture,
+        u.nickname,u.avatar,
+        t.name
+        FROM t_blog b
+        LEFT JOIN t_user u ON u.id = b.user_id
+        LEFT JOIN t_type t ON b.type_id = t.id
+    </select>
+
+    <select id="getBlogDocumentBuId" resultType="com.blog.search.model.blogDocument">
+        SELECT
+        b.id,b.title,b.description,b.create_time,b.views,b.flag,b.first_picture,
+        u.nickname,u.avatar,
+        t.name
+        FROM t_blog b
+        LEFT JOIN t_user u ON u.id = b.user_id
+        LEFT JOIN t_type t ON b.type_id = t.id
+        where b.id = #{id}
+    </select>
+</mapper>

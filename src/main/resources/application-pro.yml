@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
+    url: jdbc:mysql://localhost:3306/day2?useUnicode=true&characterEncding=utf-8&serverTimezone=GMT%2B8
+  messages:
+    basename: i18n/messages
+  redis:
+    host: localhost
+    port: 6379
+    database: 0 # 连接redis中0 号库（在redis中有0 - 15 号库）
+  rabbitmq:
+    host: 192.168.43.237  # RabbitMQ的IP地址
+    port: 5672 # 端口
+    username: admin # 用户名
+    password: 123456 # 密码
+server:
+  port: 8082
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 日志
+comment.avatar: https://picsum.photos/id/1014/100/100 # 用户评论的默认头像

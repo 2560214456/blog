@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>关于我</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<body>
+    <!--导航-->
+    <nav th:replace="_fragments :: menu(5)"></nav>
+    <!--中间内容-->
+    <div class="m-padded-tb-big m-container">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <div class="eleven wide column">
+                    <div class="ui segment">
+                        <img src="https://picsum.photos/id/1014/800/600" alt="" class="ui rounded image">
+                    </div>
+                </div>
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">关于我</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <p class="m-text">xxx，一个独立开发者，折腾在 0 和 1 世界的年轻人；一个终身学习者，誓将学习无限循环，希望结识共同成长的小伙伴</p>
+                        <p class="m-text">热爱编程，喜欢折腾，正在探索高效学习编程技术的方法......</p>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui orange basic left pointing label">编程</div>
+                        <div class="ui orange basic left pointing label">写作</div>
+                        <div class="ui orange basic left pointing label">思考</div>
+                        <div class="ui orange basic left pointing label">运动</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">java</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">javaScript</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">MySql</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Redis</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Spring</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">SpringMvc</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">SpringBoot</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">MyBatis-Plus</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+                        <a href="#" class="ui weixin circular icon button"><i class="weixin icon"></i></a>
+                        <!--content:显示的文本内容  data-position：设置在那个文字弹出  bottom center：在下方 居中弹出-->
+                        <a href="#" class="ui qq circular icon button" data-content="2560214456" data-position="bottom center"><i class="qq icon"></i></a>
+                    </div>
+                    <div class="ui weixin-qr flowing popup transition hidden">
+                        <img src="../static/image/1.png" th:src="@{/image/1.png}" alt="" class="ui rounded image" style="width: 100px">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--底部footer-->
+    <footer th:replace="_fragments :: footer"></footer>
+
+    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+        <!--
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery-migrate/3.2.0/jquery-migrate.min.js"></script>-->
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!--/*/</th:block>/*/-->
+
+<script>
+    $('.menu.toggle').click(function () {
+        /*toggleClass判断m-item元素上有没有m-mobile-hid属性 有就删除没有就添加*/
+        $(".m-item").toggleClass("m-mobile-hide")
+    })
+    $(".qq").popup({});
+    /*弹出微信二维码*/
+    $(".weixin").popup({
+        popup : $(".weixin-qr"), // 那个组件触发
+        on : "hover",   // 当鼠标移动到上面
+        position : "bottom center" // 在下方居中弹出
+    });
+</script>
+</body>
+</html>
