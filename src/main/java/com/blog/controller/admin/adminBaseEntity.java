@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.ServletRequestUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 public class adminBaseEntity {
     @Autowired
@@ -28,6 +29,8 @@ public class adminBaseEntity {
     RabbitTemplate rabbitTemplate;
     @Autowired
     AmqpTemplate amqpTemplate;
+
+    String priUuid = UUID.randomUUID().toString();//七牛云空间名称
 
     //获取分页对象
     public Page getPage(){

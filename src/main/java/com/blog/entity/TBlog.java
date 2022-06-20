@@ -105,6 +105,10 @@ public class TBlog extends BaseEntity {
      * 博客描述
      */
     private String description;
+    /**
+     * 当前博客的图片保存在七牛云的文件夹名称
+     */
+    private String imageKey;
 
     /**
      * 前端提交博客使用的标签id  格式是1,2,3,4....
