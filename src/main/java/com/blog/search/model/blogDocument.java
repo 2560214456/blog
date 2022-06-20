@@ -1,6 +1,6 @@
 package com.blog.search.model;
 
-import com.sun.javafx.beans.IDProperty;
+// import com.sun.javafx.beans.IDProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
